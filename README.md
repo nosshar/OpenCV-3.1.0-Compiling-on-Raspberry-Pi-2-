@@ -28,6 +28,7 @@
 
 	$ sudo apt-get install libatlas-base-dev gfortran
 	$ sudo apt-get install python-numpy python-scipy python-matplotlib
+	$ sudo apt-get install python3-numpy python3-scipy python3-matplotlib
 	$ sudo apt-get install default-jdk ant
 	$ sudo apt-get install libgtkglext1-dev
 	$ sudo apt-get install v4l-utils
@@ -41,34 +42,39 @@ install pip
 # Step 8:
 
 	$ sudo apt-get install python2.7-dev
+	$ sudo apt-get install python3.4-dev
 
 # Step 9:
 
-	$ sudo pip install numpy
+	$ sudo pip3 install numpy
 
 # Step 10:
 Download OpenCV 3.1.0 and unpack it
 
 	$ cd ~
-	$ wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.1.0.zip
+	$ wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.2.0.zip
 	$ unzip opencv.zip
 
 Contrib Libraries (Non-free Modules)
 
-	$ wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.1.0.zip
+	$ wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.2.0.zip
 	$ unzip opencv_contrib.zip
 
 # Step 11:
 preparing the build
 
-	$ cd ~/opencv-3.1.0/
+	$ cd ~/opencv-3.2.0/
 	$ mkdir build
 	$ cd build
 	$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 		-D CMAKE_INSTALL_PREFIX=/usr/local \
 		-D INSTALL_C_EXAMPLES=OFF \
+		-D PYTHON_INCLUDE_DIR=/usr/include/python3.4 \
+		-D PYTHON_DEFAULT_EXECUTABLE=/usr/bin/python3.4 \
+		-D PYTHON3_EXECUTABLE=/usr/bin/python3.4 \
+		-D PYTHON3_NUMPY_INCLUDE_DIRS=/usr/lib/python3/dist-packages/numpy/core/include/ \
 		-D INSTALL_PYTHON_EXAMPLES=ON \
-		-D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.1.0/modules \
+		-D OPENCV_EXTRA_MODULES_PATH=/media/pi/rpiext/_tmp/opencv_contrib-3.2.0/modules \
 		-D BUILD_EXAMPLES=ON ..
 
 # Step 12:
@@ -129,7 +135,7 @@ Type the following lines in the python shell:
 
 the following line should appear then:
 
-	'3.1.0'
+	'3.2.0'
 #Done
 
 # Watch and Fork this repo to get updates. I will be posting how to connect Raspberry Pi to PC with ETHERNET CABLE (no internet needed)
