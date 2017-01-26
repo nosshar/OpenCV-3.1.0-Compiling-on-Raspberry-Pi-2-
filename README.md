@@ -46,6 +46,7 @@ install pip
 
 # Step 9:
 
+	$ sudo pip install numpy
 	$ sudo pip3 install numpy
 
 # Step 10:
